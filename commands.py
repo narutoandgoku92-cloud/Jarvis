@@ -1,4 +1,4 @@
-from skills import list_files,speak,dial,tell_time,memory,recall_memory ,search_web,create_folder ,date,open_calculator,open_notepad,open_visual_studio, hello,screenshot,check_battery,read_note,create_note,search_files,add_note
+from skills import create_note,select,delete_file ,list_files,speak,dial,tell_time,memory,recall_memory ,search_web,create_folder ,date,open_calculator,open_notepad,open_visual_studio, hello,screenshot,check_battery,read_note,create_note,search_files,add_note
 
 
 
@@ -23,13 +23,17 @@ commands = {
     "search": search_web,
     "date": date,
     "hello": hello,
-    "list files": list_files
+    "list files": list_files,
+    "delete file": delete_file,
+    "select": select,
+    "create note": create_note
+    
     
 }
 
 
 def process_command(command):
-    for value,key in commands.items():
+    for key, value in commands.items():
         if key in command:
             value()
             return

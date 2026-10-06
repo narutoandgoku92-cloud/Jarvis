@@ -6,6 +6,9 @@ import os
 import psutil
 import pyautogui
 import json
+from pathlib import Path
+
+JARVIS_FOLDER = Path.home() / "Music" / "jarvis"
 
 def open_notepad():
     os.startfile("notepad.exe")
@@ -29,12 +32,12 @@ def search_web():
     
 
 def tell_time():
-    current_time = datetime.now()
+    current_time = datetime.datetime.now()
     speak(f"The current time is {current_time.strftime('%H:%M')}")
 
 
 def date():
-    current_date = datetime.now()
+    current_date = datetime.datetime.now()
     speak(f"Today's date is {current_date.strftime('%B %d, %Y')}")
     
     
@@ -44,7 +47,7 @@ def hello():
     
 def screenshot():
     screenshot =pyautogui.screenshot()
-    name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S") 
+    name = datetime.    datetime.now().strftime("%Y-%m-%d_%H-%M-%S") 
     screenshot.save(name + ".png") 
 
 
@@ -58,7 +61,7 @@ def check_battery():
 def create_note():
     speak("What would you like to name the note?")
     note_name = listen()
-    with open(f"C:\\Users\\gbola\\Music\\jarvis\\{note_name}.txt", "w") as f:
+    with open(JARVIS_FOLDER / f"{note_name}.txt", "w") as f:
         speak("What would you like to write in the note?")
         note_content =listen()
         
